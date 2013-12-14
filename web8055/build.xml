@@ -1,0 +1,48 @@
+<project default="dist">
+
+<property file="application.properties"/>
+<property name="build" value="dist"/>
+<property name="build.classes" value="${build}/classes"/>
+<property name="src" value="src/main/java"/>
+<property name="lib.jna" value="lib/jna-4.0.0.jar"/>
+<property name="jar.file" value="${build}/${app.name}-${app.version}.jar"/>
+
+<target name="clean">
+ <delete dir="${build}"/>
+</target>
+
+<target name="build">
+ <mkdir dir="${build.classes}"/>
+ 
+<javac destdir="${build.classes}"
+         classpath="${lib.jna}"
+         debug="on"
+         includeantruntime="yes"
+         source="1.7">
+    <src path="${src}"/>
+ </javac>
+</target>
+
+<target name="jar" depends="build">
+ <jar destfile="${jar.file}">
+  <fileset dir="${build.classes}" includes="**/*.class"/>
+  <manifest>
+   <attribute name="Main-Class" value="JnaK8055"/>
+  </manifest>
+ </jar>
+
+ <copy file="${lib.jna}" todir="${build}"/>
+</target>
+
+<target name="run" depends="jar">
+ <!-- classname="JnaK8055 -->
+ <java dir="." fork="yes" jar="${jar.file}">
+ <classpath>
+   <pathelement location="${build}/${lib.jna}"/>
+ </classpath>
+ </java>
+</target>
+
+<target name="dist" depends="jar"/>
+
+</project>
