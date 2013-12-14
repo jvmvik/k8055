@@ -1,0 +1,27 @@
+# velleman.rules a udev rules file for velleman K8055/VM110.
+# Put this file in /etc/udev/rules.d
+#
+# This script sets the mode of the k8055_ accessible devices
+# to "666" meaning "read and write for everyone", really a security
+# risk. Therefore think about it before applying this to your system.
+# However since there are so many ways of managing permissions for
+# devices we have no better idea.
+#
+# If you have a desktop user group, set MODE to "660" and tag
+# on GROUP="k8055" after the MODE rule. Subsitute GROUP 
+# "k8055" for a good value for your system, this group should 
+# include desktop users (see your /etc/group). 
+#
+# You can add a RUN="..." attribute to run some arbitrary script
+# when the device is plugged in.
+
+SUBSYSTEM !="usb_device", ACTION !="add", GOTO="velleman_rules_end"
+
+SYSFS{idVendor}=="10cf", SYSFS{idProduct}=="5500", SYMLINK+="k8055_0"
+SYSFS{idVendor}=="10cf", SYSFS{idProduct}=="5501", SYMLINK+="k8055_1"
+SYSFS{idVendor}=="10cf", SYSFS{idProduct}=="5502", SYMLINK+="k8055_2"
+SYSFS{idVendor}=="10cf", SYSFS{idProduct}=="5503", SYMLINK+="k8055_3"
+
+MODE="0666", OWNER="root", GROUP="root"
+
+LABEL="velleman_rules_end"
