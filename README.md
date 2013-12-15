@@ -18,8 +18,9 @@ Currently under Trial development phase...
 
 Directories
 -----
- - web8055  : Web application & standalone server
  - libk8055 : Driver for electronic card k8055
+ - jnak8055 : Driver wrapper for Java based on JNA
+ - web8055  : Web application & standalone server
 
 Details about the card k8055
 ----
