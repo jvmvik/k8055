@@ -1,0 +1,28 @@
+{
+  "name": "k8055",
+  "version": "0.1.0",
+  "description": "native library for k8055 ",
+  "main": "k8055.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "node-gyp": "~1.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "keywords": [
+    "k8055",
+    "raspberry",
+    "iot",
+    "digital",
+    "analog",
+    "electronic"
+  ],
+  "author": "Victor Benarbia",
+  "license": "ISC",
+  "gypfile": true
+}
