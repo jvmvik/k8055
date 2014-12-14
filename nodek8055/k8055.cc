@@ -71,6 +71,22 @@ Handle<Value> Disconnect(const Arguments& args) {
   return scope.Close(v8::Boolean::New(ack));
 }
 
+Handle<Value> GetDigital(const Arguments& args) {
+  HandleScope scope;
+
+  if (args.Length() != 0) {
+    ThrowException(Exception::TypeError(String::New("No argument expected")));
+    return scope.Close(Undefined());
+  }
+
+  long d = -1;
+  if(isConnected)
+  {
+    d = ReadAllDigital();
+  }
+  return scope.Close(v8::Number::New(d));
+}
+
 
 void init(Handle<Object> exports) {
 
@@ -80,9 +96,12 @@ void init(Handle<Object> exports) {
   exports->Set(String::NewSymbol("setDigital"),
       FunctionTemplate::New(SetDigital)->GetFunction());
 
+  exports->Set(String::NewSymbol("getDigital"),
+      FunctionTemplate::New(GetDigital)->GetFunction());
+
   exports->Set(String::NewSymbol("disconnect"),
       FunctionTemplate::New(Disconnect)->GetFunction());
 }
 
-NODE_MODULE(hello, init)
+NODE_MODULE(k8055, init)
 
