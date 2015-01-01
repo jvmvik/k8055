@@ -1,0 +1,30 @@
+{
+  "name": "mqtt-k8055-raspberrypi-example",
+  "version": "0.0.1",
+  "description": "Publish / consume LED status messages via MQTT on a Rapberry Pi",
+  "main": "consumer.js",
+  "dependencies": {
+    "mqtt": "~0.3.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git"
+  },
+  "keywords": [
+    "raspberry",
+    "pi",
+    "mqtt",
+    "k8055",
+    "electronic",
+    "publisher",
+    "consumer",
+    "led",
+    "statuses"
+  ],
+  "author": "Victor Benarbia",
+  "license": "ISC"
+}
